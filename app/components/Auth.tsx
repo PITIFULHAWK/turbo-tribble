@@ -29,7 +29,7 @@ const Auth = () => {
       <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-center">Your Future Starts Here</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
+          {/* <input
             type="text"
             name="name"
             placeholder="Full Name"
@@ -37,7 +37,7 @@ const Auth = () => {
             onChange={handleChange}
             className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800"
             required
-            />
+            /> */}
           <input
             type="email"
             name="email"
