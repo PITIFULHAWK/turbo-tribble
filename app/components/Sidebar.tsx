@@ -7,8 +7,16 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
+interface FormData {
+  fromLocation: string
+  toLocation: string
+  date: string
+  time: string
+  userType: "rider" | "pillion"
+}
+
 interface SidebarProps {
-  onFindTrips: (formData: any) => void
+  onFindTrips: (formData: FormData) => void
 }
 
 export default function Sidebar({ onFindTrips }: SidebarProps) {
@@ -16,11 +24,11 @@ export default function Sidebar({ onFindTrips }: SidebarProps) {
   const [toLocation, setToLocation] = useState("")
   const [date, setDate] = useState("")
   const [time, setTime] = useState("")
-  const [userType, setUserType] = useState("rider")
+  const [userType, setUserType] = useState<"rider" | "pillion">("rider")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const formData = { fromLocation, toLocation, date, time, userType }
+    const formData: FormData = { fromLocation, toLocation, date, time, userType }
     onFindTrips(formData)
   }
 
@@ -30,26 +38,30 @@ export default function Sidebar({ onFindTrips }: SidebarProps) {
       <form onSubmit={handleSubmit} className="space-y-4">
         <LocationInput label="From" value={fromLocation} onChange={setFromLocation} />
         <LocationInput label="To" value={toLocation} onChange={setToLocation} />
+        
         <div>
           <Label htmlFor="date">Date</Label>
           <Input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className="mt-1" />
         </div>
+        
         <div>
           <Label htmlFor="time">Time</Label>
           <Input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} className="mt-1" />
         </div>
+        
         <div>
           <Label>I am a</Label>
           <ToggleGroup
             type="single"
             value={userType}
-            onValueChange={(value) => value && setUserType(value)}
+            onValueChange={(value) => value && setUserType(value as "rider" | "pillion")}
             className="justify-start mt-1"
           >
             <ToggleGroupItem value="rider">Rider</ToggleGroupItem>
             <ToggleGroupItem value="pillion">Pillion</ToggleGroupItem>
           </ToggleGroup>
         </div>
+        
         <Button type="submit" className="w-full">
           Find Trips
         </Button>
@@ -57,4 +69,3 @@ export default function Sidebar({ onFindTrips }: SidebarProps) {
     </aside>
   )
 }
-

@@ -1,15 +1,10 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-
 interface Trip {
   id: string
   from: string
   to: string
   date: string
   time: string
-  driver: string
-  price: number
-  distance: number
+  userType: "rider" | "pillion"
 }
 
 interface TripResultsProps {
@@ -19,39 +14,32 @@ interface TripResultsProps {
 
 export default function TripResults({ trips, onRequestTrip }: TripResultsProps) {
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <h2 className="text-xl font-bold mb-4">Available Trips</h2>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>From</TableHead>
-            <TableHead>To</TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead>Time</TableHead>
-            <TableHead>Driver</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>Distance</TableHead>
-            <TableHead>Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+    <div>
+      {trips.length === 0 ? (
+        <p>No trips found</p>
+      ) : (
+        <ul>
           {trips.map((trip) => (
-            <TableRow key={trip.id}>
-              <TableCell>{trip.from}</TableCell>
-              <TableCell>{trip.to}</TableCell>
-              <TableCell>{trip.date}</TableCell>
-              <TableCell>{trip.time}</TableCell>
-              <TableCell>{trip.driver}</TableCell>
-              <TableCell>${trip.price.toFixed(2)}</TableCell>
-              <TableCell>{trip.distance.toFixed(2)} km</TableCell>
-              <TableCell>
-                <Button onClick={() => onRequestTrip(trip.id)}>Request</Button>
-              </TableCell>
-            </TableRow>
+            <li key={trip.id} className="border p-2 my-2">
+              <p>
+                <strong>From:</strong> {trip.from} → <strong>To:</strong> {trip.to}
+              </p>
+              <p>
+                <strong>Date:</strong> {trip.date} <strong>Time:</strong> {trip.time}
+              </p>
+              <p>
+                <strong>Type:</strong> {trip.userType}
+              </p>
+              <button
+                onClick={() => onRequestTrip(trip.id)}
+                className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
+              >
+                Request Trip
+              </button>
+            </li>
           ))}
-        </TableBody>
-      </Table>
+        </ul>
+      )}
     </div>
   )
 }
-
