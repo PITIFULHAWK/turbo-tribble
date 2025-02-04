@@ -7,35 +7,21 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
-interface FormData {
-  fromLocation: string
-  toLocation: string
-  date: string
-  time: string
-  userType: "rider" | "pillion"
-}
 
-interface SidebarProps {
-  onFindTrips: (formData: FormData) => void
-}
 
-export default function Sidebar({ onFindTrips }: SidebarProps) {
+
+export default function Sidebar() {
   const [fromLocation, setFromLocation] = useState("")
   const [toLocation, setToLocation] = useState("")
   const [date, setDate] = useState("")
   const [time, setTime] = useState("")
   const [userType, setUserType] = useState<"rider" | "pillion">("rider")
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const formData: FormData = { fromLocation, toLocation, date, time, userType }
-    onFindTrips(formData)
-  }
 
   return (
     <aside className="w-96 bg-white shadow-md p-6">
       <h2 className="text-xl font-bold mb-4">Find a Trip</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form  className="space-y-4">
         <LocationInput label="From" value={fromLocation} onChange={setFromLocation} />
         <LocationInput label="To" value={toLocation} onChange={setToLocation} />
         
