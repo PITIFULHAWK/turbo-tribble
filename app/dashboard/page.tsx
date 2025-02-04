@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "../../hooks/use-toast"
 import Header from "../components/Header"
 import Sidebar from "../components/Sidebar"
 import Map from "../components/Map"
