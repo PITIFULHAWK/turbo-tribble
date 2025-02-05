@@ -10,8 +10,7 @@ import TripResults from "../components/Tripresults"
 export default function Dashboard() {
   const [trips, setTrips] = useState([])
   const { toast } = useToast()
-  
-  const handleFindTrips = async (formData) => {
+  const handleFindTrips = async (formData : any) => {
     // Simulating an API call to fetch trips
     const response = await fetch("/api/trips", {
       method: "POST",
@@ -32,25 +31,29 @@ export default function Dashboard() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ tripId }),
-      })
-      const data = await response.json()
-
+      });
+  
+      const data = await response.json();
+  
       if (response.ok) {
         toast({
           title: "Success",
           description: data.message,
-        })
+        });
       } else {
-        throw new Error(data.message)
+        throw new Error(data.message || "An error occurred");
       }
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to send trip request";
+      
       toast({
         title: "Error",
-        description: error.message || "Failed to send trip request",
+        description: errorMessage,
         variant: "destructive",
-      })
+      });
     }
-  }
+  };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
