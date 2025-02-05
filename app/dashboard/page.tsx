@@ -55,20 +55,12 @@ export default function Dashboard() {
   };
   
 
+export default function dashboard(){
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <Header />
-      <div className="flex flex-1">
-        <Sidebar onFindTrips={handleFindTrips} />
-        <main className="flex-1 p-4 flex flex-col">
-          <div className="h-1/2 mb-4">
-            <Map />
-          </div>
-          <div className="h-1/2 overflow-auto">
-            <TripResults trips={trips} onRequestTrip={handleRequestTrip} />
-          </div>
-        </main>
-      </div>
-    </div>
+    <Dashboard/>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

@@ -35,17 +35,20 @@ export default function Sidebar({ onFindTrips }: SidebarProps) {
   return (
     <aside className="w-96 bg-white shadow-md p-6">
       <h2 className="text-xl font-bold mb-4">Find a Trip</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form  className="space-y-4">
         <LocationInput label="From" value={fromLocation} onChange={setFromLocation} />
         <LocationInput label="To" value={toLocation} onChange={setToLocation} />
+        
         <div>
           <Label htmlFor="date">Date</Label>
           <Input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className="mt-1" />
         </div>
+        
         <div>
           <Label htmlFor="time">Time</Label>
           <Input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} className="mt-1" />
         </div>
+        
         <div>
           <Label>I am a</Label>
           <ToggleGroup
@@ -58,10 +61,15 @@ export default function Sidebar({ onFindTrips }: SidebarProps) {
             <ToggleGroupItem value="pillion">Pillion</ToggleGroupItem>
           </ToggleGroup>
         </div>
+        
         <Button type="submit" className="w-full">
           Find Trips
         </Button>
       </form>
     </aside>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

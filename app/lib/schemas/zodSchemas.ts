@@ -13,9 +13,9 @@ export const TripStatusSchema = z.enum([
 export const UserSchema = z.object({
   id: z.string().length(24), // MongoDB ObjectId length
   phone: z.string().min(10),
-  name: z.string(),
+  name: z.string().optional(),
   profilePicture: z.string().optional(),
-  email: z.string().email().optional(),
+  email: z.string().email(),
   currentLat: z.number().optional(),
   currentLng: z.number().optional(),
   createdAt: z.date(),
