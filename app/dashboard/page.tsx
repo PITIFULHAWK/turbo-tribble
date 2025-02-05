@@ -10,7 +10,7 @@ import TripResults from "../components/Tripresults"
 export default function Dashboard() {
   const [trips, setTrips] = useState([])
   const { toast } = useToast()
-
+  
   const handleFindTrips = async (formData) => {
     // Simulating an API call to fetch trips
     const response = await fetch("/api/trips", {
@@ -69,4 +69,3 @@ export default function Dashboard() {
     </div>
   )
 }
-
