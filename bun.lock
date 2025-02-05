@@ -27,6 +27,7 @@
       },
       "devDependencies": {
         "@eslint/eslintrc": "^3",
+        "@types/google.maps": "^3.58.1",
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
@@ -283,6 +284,8 @@
     "@toastdotdev/lib-win32-x64-msvc": ["@toastdotdev/lib-win32-x64-msvc@0.0.1", "", { "os": "win32", "cpu": "x64" }, "sha512-xPL3bqnRwEXUzO6bxErvcNiQ+kH4K3E78cpjYu3q+94np9tb0VpCj38WrD8xyQFhvbvnvS+SP8MbZcBFTPgrRA=="],
 
     "@types/estree": ["@types/estree@1.0.6", "", {}, "sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw=="],
+
+    "@types/google.maps": ["@types/google.maps@3.58.1", "", {}, "sha512-X9QTSvGJ0nCfMzYOnaVs/k6/4L+7F5uCS+4iUmkLEls6J9S/Phv+m/i3mDeyc49ZBgwab3EFO1HEoBY7k98EGQ=="],
 
     "@types/json-schema": ["@types/json-schema@7.0.15", "", {}, "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA=="],
 

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 
-export async function POST(request: Request) {
-  const body = await request.json()
+export async function POST() {
 
   // Simulate processing delay
   await new Promise((resolve) => setTimeout(resolve, 1000))

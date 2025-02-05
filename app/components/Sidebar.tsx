@@ -7,21 +7,29 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
+interface TripSearchFormData {
+  fromLocation: string
+  toLocation: string
+  date: string
+  time: string
+  userType: "rider" | "pillion"
+}
+
 interface SidebarProps {
-  onFindTrips: (formData: any) => void
+  onFindTrips: (formData: TripSearchFormData) => void
 }
 
 export default function Sidebar({ onFindTrips }: SidebarProps) {
-  const [fromLocation, setFromLocation] = useState("")
-  const [toLocation, setToLocation] = useState("")
-  const [date, setDate] = useState("")
-  const [time, setTime] = useState("")
-  const [userType, setUserType] = useState("rider")
+  const [fromLocation, setFromLocation] = useState<string>("")
+  const [toLocation, setToLocation] = useState<string>("")
+  const [date, setDate] = useState<string>("")
+  const [time, setTime] = useState<string>("")
+  const [userType, setUserType] = useState<"rider" | "pillion">("rider")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const formData = { fromLocation, toLocation, date, time, userType }
-    onFindTrips(formData)
+    const formData: TripSearchFormData = { fromLocation, toLocation, date, time, userType }
+    onFindTrips(formData) // Now correctly typed
   }
 
   return (
@@ -43,7 +51,7 @@ export default function Sidebar({ onFindTrips }: SidebarProps) {
           <ToggleGroup
             type="single"
             value={userType}
-            onValueChange={(value) => value && setUserType(value)}
+            onValueChange={(value) => value && setUserType(value as "rider" | "pillion")}
             className="justify-start mt-1"
           >
             <ToggleGroupItem value="rider">Rider</ToggleGroupItem>
@@ -57,4 +65,3 @@ export default function Sidebar({ onFindTrips }: SidebarProps) {
     </aside>
   )
 }
-
